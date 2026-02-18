@@ -139,73 +139,6 @@ export function FleetDashboard() {
         <p className="text-muted-foreground text-sm mt-1">Real-time monitoring and telemetry</p>
       </div>
 
-      {/* Action Required Section */}
-      {/* Live Fleet Status - Showing All Vehicles */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
-        className="bg-card border border-border rounded-lg p-6"
-      >
-        <div className="flex items-center gap-3 mb-4">
-          <div className="bg-primary/10 p-2 rounded-lg">
-            <Car className="w-5 h-5 text-primary" />
-          </div>
-          <div>
-            <h2 className="text-lg font-semibold">Live Fleet Status</h2>
-            <p className="text-sm text-muted-foreground">Real-time telemetry from all connected vehicles</p>
-          </div>
-        </div>
-
-        <div className="space-y-3">
-          {vehicles.length === 0 && (
-            <p className="text-muted-foreground text-sm p-4 text-center border border-dashed rounded-lg">
-              No vehicles connected. Start the simulator to see live data.
-            </p>
-          )}
-          {vehicles.map((vehicle, index) => {
-            const isCritical = vehicle.healthState === 'CRITICAL';
-            const isDegraded = vehicle.healthState === 'DEGRADED';
-            const statusColor = isCritical ? 'text-red-400' : isDegraded ? 'text-amber-400' : 'text-emerald-400';
-            const borderColor = isCritical ? 'border-red-500/30' : isDegraded ? 'border-amber-500/30' : 'border-border';
-            const bgColor = isCritical ? 'bg-red-500/5' : isDegraded ? 'bg-amber-500/5' : 'bg-card';
-
-            return (
-              <motion.div
-                key={vehicle.vehicleId}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className={`${bgColor} border ${borderColor} rounded-lg p-4 hover:border-primary/30 transition-all group`}
-              >
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-4">
-                    <span className="font-mono font-semibold text-lg">{vehicle.vehicleId}</span>
-                    <div className="flex gap-4 text-sm text-muted-foreground">
-                      <span className="flex items-center gap-1">
-                        <Battery className="w-4 h-4" /> {vehicle.battery?.toFixed(1)}%
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Thermometer className="w-4 h-4" /> {vehicle.temperature?.toFixed(1)}°C
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-4">
-                    <div className={`px-2 py-1 rounded text-xs font-bold uppercase ${statusColor} bg-white/5`}>
-                      {vehicle.healthState}
-                    </div>
-                    <span className="text-xs text-muted-foreground">
-                      Score: {vehicle.healthScore}
-                    </span>
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
-      </motion.div>
-
       {/* KPI Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
         {kpiCards.map((card, index) => {
@@ -314,6 +247,73 @@ export function FleetDashboard() {
           <p className="text-muted-foreground text-sm">Long-term analysis pending backend TSDB integration.</p>
         </motion.div>
       </div>
+
+      {/* Action Required Section */}
+      {/* Live Fleet Status - Showing All Vehicles */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+        className="bg-card border border-border rounded-lg p-6"
+      >
+        <div className="flex items-center gap-3 mb-4">
+          <div className="bg-primary/10 p-2 rounded-lg">
+            <Car className="w-5 h-5 text-primary" />
+          </div>
+          <div>
+            <h2 className="text-lg font-semibold">Live Fleet Status</h2>
+            <p className="text-sm text-muted-foreground">Real-time telemetry from all connected vehicles</p>
+          </div>
+        </div>
+
+        <div className="space-y-3">
+          {vehicles.length === 0 && (
+            <p className="text-muted-foreground text-sm p-4 text-center border border-dashed rounded-lg">
+              No vehicles connected. Start the simulator to see live data.
+            </p>
+          )}
+          {vehicles.map((vehicle, index) => {
+            const isCritical = vehicle.healthState === 'CRITICAL';
+            const isDegraded = vehicle.healthState === 'DEGRADED';
+            const statusColor = isCritical ? 'text-red-400' : isDegraded ? 'text-amber-400' : 'text-emerald-400';
+            const borderColor = isCritical ? 'border-red-500/30' : isDegraded ? 'border-amber-500/30' : 'border-border';
+            const bgColor = isCritical ? 'bg-red-500/5' : isDegraded ? 'bg-amber-500/5' : 'bg-card';
+
+            return (
+              <motion.div
+                key={vehicle.vehicleId}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.1 }}
+                className={`${bgColor} border ${borderColor} rounded-lg p-4 hover:border-primary/30 transition-all group`}
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-4">
+                    <span className="font-mono font-semibold text-lg">{vehicle.vehicleId}</span>
+                    <div className="flex gap-4 text-sm text-muted-foreground">
+                      <span className="flex items-center gap-1">
+                        <Battery className="w-4 h-4" /> {vehicle.battery?.toFixed(1)}%
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <Thermometer className="w-4 h-4" /> {vehicle.temperature?.toFixed(1)}°C
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-4">
+                    <div className={`px-2 py-1 rounded text-xs font-bold uppercase ${statusColor} bg-white/5`}>
+                      {vehicle.healthState}
+                    </div>
+                    <span className="text-xs text-muted-foreground">
+                      Score: {vehicle.healthScore}
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+      </motion.div>
     </div>
   );
 }
