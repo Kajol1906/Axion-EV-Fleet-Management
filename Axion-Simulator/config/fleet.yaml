@@ -1,16 +1,52 @@
 vehicles:
+  # Standard Sedans (Bulk Load)
   - id: "v001"
     profile: "sedan_standard"
-    scenario: "normal"
   - id: "v002"
-    profile: "truck_heavy"
-    scenario: "normal"
+    profile: "sedan_standard"
   - id: "v003"
-    profile: "sedan_sport"
-    scenario: "critical_temp"
+    profile: "sedan_standard"
   - id: "v004"
+    profile: "sedan_standard"
+  - id: "v005"
+    profile: "sedan_standard"
+  - id: "v006"
+    profile: "sedan_standard"
+  - id: "v007"
+    profile: "sedan_standard"
+  - id: "v008"
+    profile: "sedan_standard"
+  - id: "v009"
+    profile: "sedan_standard"
+  - id: "v010"
+    profile: "sedan_standard"
+  - id: "v011"
+    profile: "sedan_standard"
+  - id: "v012"
+    profile: "sedan_standard"
+  - id: "v013"
+    profile: "sedan_standard"
+  - id: "v014"
+    profile: "sedan_standard"
+  - id: "v015"
+    profile: "sedan_standard"
+  
+  # Heavy Trucks (Variety)
+  - id: "v016"
+    profile: "truck_heavy"
+  - id: "v017"
+    profile: "truck_heavy"
+  - id: "v018"
+    profile: "truck_heavy"
+
+  # Scenarios for Resume Validation
+  - id: "v019"
+    profile: "sedan_sport"
+    scenario: "critical_temp"  # Validates Health Score Logic
+  - id: "v020"
     profile: "truck_light"
-    scenario: "low_battery"
+    scenario: "low_battery"    # Validates Warning Logic
+
 mqtt:
   broker: "localhost"
   port: 1883

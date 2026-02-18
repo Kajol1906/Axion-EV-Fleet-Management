@@ -24,4 +24,8 @@ public class DigitalTwinState {
 
     private String healthState;
 
+    private boolean otaEligibility;
+
+    private Instant lastUpdateTimestamp;
+
 }

@@ -77,6 +77,9 @@ public class FleetController {
                 v.setTemperature(state.getTelemetry().getBatteryTempC());
             }
 
+            v.setOtaEligibility(state.isOtaEligibility());
+            v.setLastUpdateTimestamp(state.getLastUpdateTimestamp());
+
             vehicles.add(v);
         }
 

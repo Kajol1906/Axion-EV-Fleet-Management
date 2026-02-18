@@ -17,4 +17,7 @@ public class FleetVehicleResponse {
     private Instant lastSeen;
     private Double battery;
     private Double temperature;
+
+    private boolean otaEligibility;
+    private Instant lastUpdateTimestamp;
 }
