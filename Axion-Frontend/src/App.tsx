@@ -6,7 +6,7 @@ import { VehicleDetail } from './components/vehicle/VehicleDetail';
 import { OTAManagement } from './components/ota/OTAManagement';
 import { Analytics } from './components/analytics/Analytics';
 
-type Page = 'dashboard' | 'fleet' | 'vehicles' | 'digital-twin' | 'ota' | 'analytics' | 'settings';
+type Page = 'dashboard' | 'vehicles' | 'digital-twin' | 'ota' | 'analytics' | 'settings';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<Page>('dashboard');
@@ -16,11 +16,7 @@ export default function App() {
     switch (currentPage) {
       case 'dashboard':
         return <FleetDashboard />;
-      case 'fleet':
-        return <VehicleList onSelectVehicle={(id) => {
-          setSelectedVehicleId(id);
-          setCurrentPage('digital-twin');
-        }} />;
+
       case 'vehicles':
         return <VehicleList onSelectVehicle={(id) => {
           setSelectedVehicleId(id);

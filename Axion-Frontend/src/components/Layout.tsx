@@ -27,7 +27,6 @@ export function Layout({ children, currentPage, onNavigate }: LayoutProps) {
 
   const navItems = [
     { id: 'dashboard' as Page, label: 'Dashboard', icon: LayoutDashboard },
-    { id: 'fleet' as Page, label: 'Fleet', icon: Car },
     { id: 'vehicles' as Page, label: 'Vehicles', icon: Car },
     { id: 'digital-twin' as Page, label: 'Digital Twin', icon: Layers },
     { id: 'ota' as Page, label: 'OTA Campaigns', icon: Upload },
@@ -69,8 +68,8 @@ export function Layout({ children, currentPage, onNavigate }: LayoutProps) {
                   <button
                     onClick={() => onNavigate(item.id)}
                     className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all group ${isActive
-                        ? 'bg-primary/10 text-primary shadow-lg shadow-primary/20'
-                        : 'text-sidebar-foreground hover:bg-sidebar-accent hover:text-accent-foreground'
+                      ? 'bg-primary/10 text-primary shadow-lg shadow-primary/20'
+                      : 'text-sidebar-foreground hover:bg-sidebar-accent hover:text-accent-foreground'
                       }`}
                   >
                     <Icon className="w-5 h-5 flex-shrink-0" />
